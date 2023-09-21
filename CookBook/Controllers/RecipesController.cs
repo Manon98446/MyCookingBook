@@ -9,7 +9,7 @@ using CookBook.Models;
 
 namespace CookBook.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class RecipesController : ControllerBase
     {
@@ -54,7 +54,7 @@ namespace CookBook.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutRecipe(long id, Recipe recipe)
         {
-            if (id != recipe.IdR)
+            if (id != recipe.RecipeId)
             {
                 return BadRequest();
             }
@@ -89,7 +89,7 @@ namespace CookBook.Controllers
             await _context.SaveChangesAsync();
 
             //return CreatedAtAction("GetRecipe", new { id = recipe.IdR }, recipe);
-            return CreatedAtAction(nameof (GetRecipe), new { id = recipe.IdR }, recipe);
+            return CreatedAtAction(nameof (GetRecipe), new { id = recipe.RecipeId }, recipe);
         }
 
         // DELETE: api/Recipes/5
@@ -114,7 +114,7 @@ namespace CookBook.Controllers
 
         private bool RecipeExists(long id)
         {
-            return (_context.Recipes?.Any(e => e.IdR == id)).GetValueOrDefault();
+            return (_context.Recipes?.Any(e => e.RecipeId == id)).GetValueOrDefault();
         }
     }
 }

@@ -1,5 +1,8 @@
-using Microsoft.EntityFrameworkCore;
-using CookBook.Models;
+global using CookBook.Models;
+global using Microsoft.EntityFrameworkCore;
+using CookBook.Data;
+using CookBook.Services.RecipeService;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +15,8 @@ builder.Services.AddDbContext<RecipeContext>(opt =>
     opt.UseInMemoryDatabase("RecipeList"));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<IRecipeService, RecipeService>();
+builder.Services.AddDbContext<DataContext>();
 
 var app = builder.Build();
 

@@ -1,30 +1,31 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CookBook.Models
 {
     public class Recipe
     {
-        [Key] public long IdR { get; set; }
-        public string? NameR { get; set; }
+        [Key] public long RecipeId { get; set; }
+        public string? RecipeName { get; set; }
         public string? Image { get; set; }
         public int Time { get; set; }
         public int NumPers { get; set; }
-        public string? Type { get; set; }
         public string? Ingredients { get; set; }
         public string? Instructions { get; set; }
 
+        //Relations
+        //public List<Recipe_User>? Recipes_Users { get; set; }
+
+        //PlateType
+        //public int PlateId { get; set; }
+        //[ForeignKey("PlateId")]
+       // public PlateType? PlateType { get; set; }
+        
+       // public int CookingStyleId {  get; set; }
+       // [ForeignKey("CookingStyleId")]
+        //public CookingStyle? CookingStyle { get; set; }
+
+
+
     }
-        /*public class Tags
-        {
-            public long IdT { get; set; }
-            public string NameT { get; set; }
-            public string TypeT { get; set; }
-
-        }
-        public class TagsRecipe
-        {
-            public long IdT { get; set; }
-            public long IdR { get; set; }
-
-        }*/
 }
