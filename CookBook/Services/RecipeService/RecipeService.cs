@@ -1,59 +1,53 @@
-﻿using CookBook.Models;
+﻿using CookBook.Data;
+using CookBook.Models;
 
 namespace CookBook.Services.RecipeService
 {
     public class RecipeService : IRecipeService
     {
-        private static List<Recipe> listRecipes = new List<Recipe> {
-                new Recipe{
-                    RecipeId = 1,
-                    RecipeName="Pancakes"
-                },
-                new Recipe{
-                    RecipeId=2,
-                    RecipeName="Waffles"
-                },
-                 new Recipe{
-                     RecipeId=3,
-                    RecipeName="eggs"
-                }
-        };
-         
-        public List<Recipe> AddRecipe(Recipe recipe)
+        
+        private DataContext _context;
+
+        public RecipeService(DataContext context)
         {
-            listRecipes.Add(recipe);
-            if (recipe == null)
-                return null;
-            return listRecipes;
+            _context = context;
+        }
+        public async Task<List<Recipe>> AddRecipe(Recipe recipe)
+        {
+            _context.Recipes.Add(recipe);
+
+            await _context.SaveChangesAsync();
+            return await _context.Recipes.ToListAsync();
         }
 
-        public List<Recipe> DeleteRecipe(int id)
+        public async Task<List<Recipe>> DeleteRecipe(int id)
         {
-            var recipe = listRecipes.Find(x => x.RecipeId == id);
+            var recipe = await _context.Recipes.FindAsync(id);
             if (recipe == null)
                 return null;
 
-            listRecipes.Remove(recipe);
-
-            return listRecipes;
+            _context.Recipes.Remove(recipe);
+            await _context.SaveChangesAsync();
+            return await _context.Recipes.ToListAsync();
         }
 
-        public List<Recipe> GetAllRecipes()
+        public async Task<List<Recipe>> GetAllRecipes()
         {
-            return listRecipes;
+            var recipes = await _context.Recipes.ToListAsync();
+            return recipes;
         }
 
-        public Recipe GetSingleRecipe(int id)
+        public async Task<Recipe> GetSingleRecipe(int id)
         {
-            var recipe = listRecipes.Find(x => x.RecipeId == id);
+            var recipe = await _context.Recipes.FindAsync(id);
             if (recipe == null)
                 return null;
             return recipe;
         }
 
-        public List<Recipe> UpdateRecipe(Recipe request, int id)
+        public async Task<List<Recipe>> UpdateRecipe(Recipe request, int id)
         {
-            var recipe = listRecipes.Find(x => x.RecipeId == id);
+            var recipe = await _context.Recipes.FindAsync(id);
             if (recipe == null)
                 return null;
 
@@ -64,7 +58,9 @@ namespace CookBook.Services.RecipeService
             recipe.Instructions = request.Instructions;
             recipe.Image = request.Image;
 
-            return listRecipes;
+            await _context.SaveChangesAsync();
+
+            return await _context.Recipes.ToListAsync();
         }
     }
 }

@@ -2,10 +2,10 @@
 {
     public interface IRecipeService
     {
-        List<Recipe> GetAllRecipes();
-        Recipe GetSingleRecipe(int id);
-        List<Recipe> AddRecipe(Recipe recipe);
-        List<Recipe> UpdateRecipe(Recipe request, int id);
-        List<Recipe> DeleteRecipe(int id);
+        Task<List<Recipe>> GetAllRecipes();
+        Task<Recipe> GetSingleRecipe(int id);
+        Task<List<Recipe>> AddRecipe(Recipe recipe);
+        Task<List<Recipe>> UpdateRecipe(Recipe request, int id);
+        Task<List<Recipe>> DeleteRecipe(int id);
     }
 }

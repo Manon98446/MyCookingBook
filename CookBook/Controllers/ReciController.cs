@@ -22,13 +22,13 @@ namespace CookBook.Controllers
         public async Task<ActionResult<List<Recipe>>> GetAllRecipes()
         {
              
-            return _recipeService.GetAllRecipes();
+            return await _recipeService.GetAllRecipes();
         }
 
         [HttpGet("{id}")] //the parameter id is to find the right route to the desired recipe
         public async Task<ActionResult<Recipe>> GetSingleRecipe(int id)
         {
-            var recipe =_recipeService.GetSingleRecipe(id);
+            var recipe =await _recipeService.GetSingleRecipe(id);
             if (recipe == null) 
                 return NotFound("The recipe doesn't exist");
             return Ok(recipe);
@@ -37,7 +37,7 @@ namespace CookBook.Controllers
         [HttpPost] 
         public async Task<ActionResult<List<Recipe>>> AddRecipe(Recipe recipe)
         {
-            var result = _recipeService.AddRecipe(recipe);
+            var result = await _recipeService.AddRecipe(recipe);
             if (result == null)
                 return NotFound("recipe not found");
             return Ok(result);
@@ -48,7 +48,7 @@ namespace CookBook.Controllers
         [HttpPut] //the parameter id is to find the right route to the desired recipe
         public async Task<ActionResult<List<Recipe>>> UpdateRecipe(Recipe request, int id)
         {
-            var result = _recipeService.UpdateRecipe(request, id);
+            var result = await _recipeService.UpdateRecipe(request, id);
             if (result == null)
                 return NotFound("recipe not found");
             return Ok(result);
@@ -57,7 +57,7 @@ namespace CookBook.Controllers
         [HttpDelete("{id}")] 
         public async Task<ActionResult<List<Recipe>>> DeleteRecipe(int id)
         {
-            var result = _recipeService.DeleteRecipe(id);
+            var result =await _recipeService.DeleteRecipe(id);
             if (result == null)
                 return NotFound("recipe not found");
             return Ok(result);
