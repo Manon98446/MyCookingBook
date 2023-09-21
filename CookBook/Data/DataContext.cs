@@ -10,6 +10,7 @@
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
+            //optionsBuilder.UseSqlServer("DefaultConnection");
             optionsBuilder.UseSqlServer("Server=.\\SQLExpress;Database=hamilton-8-mycookingbook;Trusted_Connection=true;TrustServerCertificate=true");
         }
 
