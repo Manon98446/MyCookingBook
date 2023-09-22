@@ -5,7 +5,7 @@ namespace CookBook.Models
 {
     public class Recipe
     {
-        [Key] public long RecipeId { get; set; }
+        [Key] public int RecipeId { get; set; }
         public string? RecipeName { get; set; }
         public string? Image { get; set; }
         public int Time { get; set; }
