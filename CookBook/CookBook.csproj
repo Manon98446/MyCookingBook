@@ -8,10 +8,7 @@
 
   <ItemGroup>
     <Compile Remove="Controllers\RecipesController.cs" />
-    <Compile Remove="Models\CookingStyle.cs" />
-    <Compile Remove="Models\PlateType.cs" />
     <Compile Remove="Models\Recipe_User.cs" />
-    <Compile Remove="Models\Users.cs" />
   </ItemGroup>
 
   <ItemGroup>

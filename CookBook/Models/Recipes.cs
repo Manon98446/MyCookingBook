@@ -13,17 +13,16 @@ namespace CookBook.Models
         public string? Ingredients { get; set; }
         public string? Instructions { get; set; }
 
-        //Relations
-        //public List<Recipe_User>? Recipes_Users { get; set; }
+        //Relations (many to many)
+        public List<Users>? Users { get; set; }
 
-        //PlateType
-        //public int PlateId { get; set; }
-        //[ForeignKey("PlateId")]
-       // public PlateType? PlateType { get; set; }
+        //PlateType (one to many)
+        public int PlateTypeId { get; set; }
+        public PlateType? PlateType { get; set; }
         
-       // public int CookingStyleId {  get; set; }
-       // [ForeignKey("CookingStyleId")]
-        //public CookingStyle? CookingStyle { get; set; }
+        //CookingStyle (one to many)
+        public int CookingStyleId {  get; set; }
+        public CookingStyle? CookingStyle { get; set; }
 
 
 
