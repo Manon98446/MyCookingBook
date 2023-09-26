@@ -17,7 +17,6 @@ namespace CookBook.Models
         public List<Users>? Users { get; set; }
 
         //PlateType (one to many)
-        public int PlateTypeId { get; set; }
         public PlateType? PlateType { get; set; }
         
         //CookingStyle (one to many)

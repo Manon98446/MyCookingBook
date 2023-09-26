@@ -12,11 +12,6 @@ namespace CookBook.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
            
-            migrationBuilder.AddColumn<int>(
-                name: "PlateTypePlateId",
-                table: "Recipes",
-                type: "int",
-                nullable: true);
 
             migrationBuilder.CreateTable(
                 name: "PlateTypes",

@@ -8,6 +8,6 @@ namespace CookBook.Models
         public string? PlateName { get; set; }
 
         //Relationships
-        public List<Recipe> Recipes { get; set; }
+        public List<Recipe>? Recipes { get; set; }
     }
 }
