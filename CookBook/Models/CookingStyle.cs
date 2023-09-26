@@ -4,7 +4,7 @@ namespace CookBook.Models
 {
     public class CookingStyle
     {
-        [Key] public long CookingStyleId {  get; set; }
+        [Key] public int CookingStyleId {  get; set; }
         public string? CookingStyleName {  get; set; }
 
         //Relationships

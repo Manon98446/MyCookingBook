@@ -3,6 +3,7 @@ using System;
 using CookBook.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CookBook.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230926074551_FixingError")]
+    partial class FixingError
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,7 +33,7 @@ namespace CookBook.Migrations
 
                     b.HasKey("CookingStyleId");
 
-                    b.ToTable("CookingStyles", (string)null);
+                    b.ToTable("CookingStyles");
                 });
 
             modelBuilder.Entity("CookBook.Models.PlateType", b =>
@@ -44,7 +47,7 @@ namespace CookBook.Migrations
 
                     b.HasKey("PlateId");
 
-                    b.ToTable("PlateTypes", (string)null);
+                    b.ToTable("PlateTypes");
                 });
 
             modelBuilder.Entity("CookBook.Models.Recipe", b =>
@@ -86,7 +89,7 @@ namespace CookBook.Migrations
 
                     b.HasIndex("PlateTypePlateId");
 
-                    b.ToTable("Recipes", (string)null);
+                    b.ToTable("Recipes");
                 });
 
             modelBuilder.Entity("CookBook.Models.Users", b =>
@@ -109,7 +112,7 @@ namespace CookBook.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("RecipeUsers", b =>
@@ -124,7 +127,7 @@ namespace CookBook.Migrations
 
                     b.HasIndex("UsersUserId");
 
-                    b.ToTable("RecipeUsers", (string)null);
+                    b.ToTable("RecipeUsers");
                 });
 
             modelBuilder.Entity("CookBook.Models.Recipe", b =>

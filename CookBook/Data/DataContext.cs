@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-
+ 
 namespace CookBook.Data
 {
     public class DataContext : DbContext
@@ -19,5 +19,8 @@ namespace CookBook.Data
         }
 
         public DbSet<Recipe> Recipes { get; set; }
+        public DbSet<PlateType> PlateTypes { get; set; }
+        public DbSet<CookingStyle> CookingStyles { get; set;}
+        public DbSet<Users> Users { get; set; }
     }
 }

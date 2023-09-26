@@ -1,0 +1,108 @@
+@import './searchBar';
+
+/* Navbar.scss */
+.navbar {
+    #new-recipe{
+        background-color: $darkOrange;
+        border-radius: 5px;
+        padding: 15px;
+    }
+    #home-phone{
+        display: none;
+    }
+    font-family: $font;
+    background-color: $lightOrange;
+    color: $fakeWhite;
+    padding: 10px 0;
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .navbar-brand a {
+      color: $fakeWhite;
+      text-decoration: none;
+      font-size: 24px;
+    }
+    .navbar-toggler {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      padding: 0;
+      outline: none;
+      span {
+        width: 30px;
+        height: 3px;
+        background-color: $fakeWhite;
+        margin: 4px 0;
+      }
+   }
+    
+    .navbar-menu {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    .navbar-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      li {
+        margin: auto 15px;
+      }
+      a {
+        text-decoration: none;
+        color: $fakeWhite;
+        font-size: 18px;
+      }
+    }
+    #logo{
+        padding-left: 15px;
+    }
+    
+    @media (max-width: 768px) {
+        #search-bar-pc{
+            display: none;
+        }
+        #home-phone{
+            display: block;
+        }
+        #logo{
+            display: none;
+        }
+      .navbar-brand{
+        margin: auto;
+            .navbar-toggler {
+            display: flex;
+            }
+            button{
+                margin: auto;
+            }
+        }
+      .navbar-menu {
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: $lightOrange;
+        width: 100%;
+        text-align: center;
+        display: none;
+        transition: all 0.3s ease;
+        &.active {
+          display: flex;
+        }
+      }
+      .navbar-links {
+        flex-direction: column;
+        padding: 20px 0;
+        li {
+          margin: 10px 0;
+        }
+      }
+    }
+  }
+  
